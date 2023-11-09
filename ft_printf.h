@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: legrandc <legrandc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:57:26 by leo               #+#    #+#             */
-/*   Updated: 2023/11/09 09:34:30 by leo              ###   ########.fr       */
+/*   Updated: 2023/11/09 18:25:15 by legrandc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # include "libft/libft.h"
 # include <stdarg.h>
 
@@ -23,7 +23,6 @@ typedef struct s_struct
 {
 	int		dash;
 	int		zero;
-	int		hash;
 	int		space;
 	int		plus;
 	int		star;
@@ -41,10 +40,15 @@ typedef struct s_struct
 	int		hex_low;
 	int		hex_up;
 	int		is_str;
+	int		hash;
 }			t_struct;
 /* FUNCTIONS */
+int			pad(t_struct *vars);
+int			handle_string(char *s, t_struct *vars);
+int			handle_ptr(size_t ptr, t_struct *vars);
+int			handle_int(int n, t_struct *vars);
+int			handle_unsigned(unsigned int n, t_struct *vars, char *base);
 int			ft_printf(const char *s, ...);
-char		*add_preff(const char *preffix, char *s);
 void		init(t_struct *vars);
 void		setflag(char c, t_struct *vars);
 

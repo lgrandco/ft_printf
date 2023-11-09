@@ -2,7 +2,7 @@ NAME = libftprintf.a
 
 SRC_PATH = srcs
 
-SRC = ft_printf.c utils.c
+SRC = ft_printf.c utils.c pad.c handler.c
 
 SRC := $(addprefix $(SRC_PATH)/,$(SRC))
 
@@ -38,7 +38,7 @@ fclean : clean
 	$(RM) $(NAME)
 
 c : ${NAME}
-	${CC} -g3 test.c -L. -lftprintf
+	${CC} -g3 -L. -lftprintf
 	valgrind ./a.out
 	rm ./a.out
 
