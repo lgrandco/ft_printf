@@ -1,16 +1,16 @@
 NAME = libftprintf.a
 
-SRC = ft_printf.c utils.c ft_itoa_base.c
+SRC_PATH = srcs
 
-BONUS_SRC =
+SRC = ft_printf.c utils.c
+
+SRC := $(addprefix $(SRC_PATH)/,$(SRC))
 
 OBJ = $(SRC:.c=.o)
 
-BONUS_OBJ = $(BONUS_SRC.c=.o)
-
 CC = clang
 
-CFLAGS = -Wall -Werror -Wextra -g3
+CFLAGS = -Wall -Werror -Wextra -g3 -I.
 
 RM = rm -f
 
@@ -37,8 +37,10 @@ fclean : clean
 	make fclean -C $(LIBFT_PATH)
 	$(RM) $(NAME)
 
-c :
-	${CC} -g3 $(SRC) -L./libft -lft
+c : ${NAME}
+	${CC} -g3 test.c -L. -lftprintf
+	valgrind ./a.out
+	rm ./a.out
 
 re : fclean all
 

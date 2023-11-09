@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 16:38:33 by leo               #+#    #+#             */
-/*   Updated: 2023/11/07 23:43:26 by leo              ###   ########.fr       */
+/*   Updated: 2023/11/09 09:38:53 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,15 @@ void	init(t_struct *vars)
 	vars->plus = 0;
 	vars->star = 0;
 	vars->dot = 0;
-	vars->precision = 1;
+	vars->precision = 0;
 	vars->percent = 0;
+	vars->is_pos = 0;
+	vars->is_nul = 0;
+	vars->is_neg = 0;
+	vars->width = 0;
+	vars->hex_low = 0;
+	vars->hex_up = 0;
+	vars->is_str = 0;
 }
 
 void	setflag(char c, t_struct *vars)
