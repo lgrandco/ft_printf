@@ -6,7 +6,7 @@
 /*   By: legrandc <legrandc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:29:00 by leo               #+#    #+#             */
-/*   Updated: 2023/11/09 19:05:02 by legrandc         ###   ########.fr       */
+/*   Updated: 2023/11/10 17:12:53 by legrandc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	parse_flags(const char **s, t_struct *vars)
 	while (ft_strchr(FLAGS, **s))
 		setflag(*(*s)++, vars);
 	if (**s == '*')
+	{
 		vars->width = va_arg(vars->ap, int);
+		(*s)++;
+	}
 	else
 		vars->width = ft_atoi(*s);
 	while (ft_isdigit(**s))
@@ -91,7 +94,7 @@ int	ft_printf(const char *s, ...)
 // {
 // 	char	*s;
 
-// 	s = "%s%s\n";
-// 	printf("printf:%d\n", printf(s, "test1", "test2"));
-// 	printf("ft_printf:%d\n", ft_printf(s, "test1", "test2"));
+// 	s = "%*s\n";
+// 	printf("printf:%d\n", printf(s, 20, "test1"));
+// 	printf("ft_printf:%d\n", ft_printf(s, 20, "test1"));
 // }
