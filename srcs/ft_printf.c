@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: legrandc <legrandc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:29:00 by leo               #+#    #+#             */
-/*   Updated: 2023/11/10 17:12:53 by legrandc         ###   ########.fr       */
+/*   Updated: 2023/11/15 04:15:50 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	parse_flags(const char **s, t_struct *vars)
 	if (**s == '.')
 	{
 		vars->dot = 1;
-		if (*(++*s) == '*')
+		if (*(++*s) == '*' && (*s)++)
 			vars->precision = va_arg(vars->ap, int);
 		else
 			vars->precision = ft_atoi(*s);
@@ -94,7 +94,7 @@ int	ft_printf(const char *s, ...)
 // {
 // 	char	*s;
 
-// 	s = "%*s\n";
+// 	s = "%.*d\n";
 // 	printf("printf:%d\n", printf(s, 20, "test1"));
 // 	printf("ft_printf:%d\n", ft_printf(s, 20, "test1"));
 // }
